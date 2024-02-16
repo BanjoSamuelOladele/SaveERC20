@@ -37,12 +37,20 @@ describe("Test saveERC20", function(){
             await saveERC20.deposit(1000);
 
             const bal = await saveERC20.checkUserBalance(owner.address);
-
+            
             expect(bal).to.be.equal(1000);
         });
-        it("", async function(){
+        it("test that deposit of zero token is not allowed", async function(){
+            const {myToken, saveERC20} = await loadFixture(deploySaveERC20);
 
-        })
+            await myToken.approve(saveERC20.target, 1000);
+
+            // expect().to.emit
+
+            expect(saveERC20.deposit(0)).to.be.rejectedWith("can't save zero value");
+        });
+
+        it("test that ")
     })
 
 })
