@@ -29,11 +29,20 @@ describe("Test saveERC20", function(){
     });
 
 
-    describe("", function(){
+    describe("test deposit", function(){
+        it("test that deposit amount is the actual amount", async function(){
+            const {myToken, owner, saveERC20} = await loadFixture(deploySaveERC20);
+            await myToken.approve(saveERC20.target, 2000);
+
+            await saveERC20.deposit(1000);
+
+            const bal = await saveERC20.checkUserBalance(owner.address);
+
+            expect(bal).to.be.equal(1000);
+        });
         it("", async function(){
-            const {myToken} = await loadFixture(deploySaveERC20);
+            
         })
     })
-
 
 })
